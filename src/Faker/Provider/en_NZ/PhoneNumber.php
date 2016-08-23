@@ -10,8 +10,8 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
      */
     protected static $formats = array(
         // National Calls
-        '{{area_code}}{{beginning_number}}######',
-        '{{area_code}} {{beginning_number}}## ####'
+        '{{areaCode}}{{beginningNumber}}######',
+        '{{areaCode}} {{beginningNumber}}## ####'
     );
 
     /**
@@ -56,34 +56,12 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     );
 
     /**
-     * Return a en_NZ landline phone number
-     * @return string
-     */
-    public static function phoneNumber()
-    {
-        $format = static::numerify(static::randomElement(static::$formats));
-
-        $withAreaCode = str_replace('{{area_code}}', static::areaCode(), $format);
-
-        return str_replace('{{beginning_number}}', static::beginningNumber(), $withAreaCode);
-    }
-
-    /**
      * Return a en_NZ mobile phone number
      * @return string
      */
     public static function mobileNumber()
     {
         return static::numerify(static::randomElement(static::$mobileFormats));
-    }
-
-    /**
-     * Return a en_NZ cell (mobile) phone number
-     * @return string
-     */
-    public static function cellNumber()
-    {
-        return static::mobileNumber();
     }
 
     /**
